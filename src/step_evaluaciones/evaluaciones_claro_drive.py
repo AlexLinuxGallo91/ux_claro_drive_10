@@ -212,7 +212,7 @@ class EvaluacionesClaroDriveSteps:
                                      ext_archivo: str):
 
         nombre_completo_de_la_imagen = '{}{}'.format(nombre_archivo_sin_ext, ext_archivo)
-        tiempo_step_inicio = 0
+        tiempo_step_inicio = None
         fecha_inicio = Temporizador.obtener_fecha_tiempo_actual()
 
         # verifica que se haya iniciado sesion correctamente
@@ -295,8 +295,11 @@ class EvaluacionesClaroDriveSteps:
 
                             HtmlActions.verificar_display_flex_modal_mensaje_de_exito(webdriver_test_ux)
 
-                            HtmlActions.click_html_element(
-                                boton_descarga, class_name=const_claro_drive.DESCARGA_ARCHIVO_CLASS_NAME_ACTION)
+                            HtmlActions.click_en_elemento_html_con_intentos(
+                                boton_descarga, 5, class_name=const_claro_drive.DESCARGA_ARCHIVO_CLASS_NAME_ACTION)
+
+                            # HtmlActions.click_html_element(
+                            #     boton_descarga, class_name=const_claro_drive.DESCARGA_ARCHIVO_CLASS_NAME_ACTION)
 
                             UtilsEvaluaciones.esperar_aparicion_modal_de_exito(webdriver_test_ux)
                             UtilsEvaluaciones.esperar_desaparicion_modal_exito(webdriver_test_ux)
@@ -410,8 +413,11 @@ class EvaluacionesClaroDriveSteps:
 
                             tiempo_step_inicio = Temporizador.obtener_tiempo_timer()
 
-                            HtmlActions.click_html_element(
-                                boton_borrar_archivo, class_name=const_claro_drive.BORRAR_ARCHIVO_CLASS_NAME_ACTION)
+                            HtmlActions.click_en_elemento_html_con_intentos(
+                                boton_borrar_archivo, 5, class_name=const_claro_drive.BORRAR_ARCHIVO_CLASS_NAME_ACTION)
+
+                            # HtmlActions.click_html_element(
+                            #     boton_borrar_archivo, class_name=const_claro_drive.BORRAR_ARCHIVO_CLASS_NAME_ACTION)
 
                             HtmlActions.verificar_display_flex_modal_mensaje_de_exito(webdriver_test_ux)
 

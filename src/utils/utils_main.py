@@ -1,4 +1,4 @@
-from os import listdir, mkdir
+from os import listdir, mkdir, umask
 from os.path import isdir, isfile, join
 from src.utils.utils_format import FormatUtils
 from pathlib import Path
@@ -45,6 +45,7 @@ class UtilsMain:
     @staticmethod
     def crear_directorio(path_directorio_por_crear):
         try:
+            umask(0)
             mkdir(path_directorio_por_crear)
         except OSError as e:
             print('Sucedio un error al intentar crear el directorio {}: {}'.format(path_directorio_por_crear, e))
